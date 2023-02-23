@@ -19,8 +19,12 @@ use App\Models\Message;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('notify', [HomeController::class, 'notify']);
+Route::get('markasread/{id}', [HomeController::class, 'markasread'])->name('markasread');
+
 
 Route::get('/dashboard', function () {
+    //message part filter the array
     $message = Message::all();
     $formatedMessage = $message->map(function ($m) {
         return [
@@ -28,8 +32,11 @@ Route::get('/dashboard', function () {
             'message' => $m->body
         ];
     });
+
+    //for notification bell
     return Inertia::render('Dashboard', [
-        'messages' => $formatedMessage
+        'messages' => $formatedMessage,
+        'notifications' => auth()->user()->notifications
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

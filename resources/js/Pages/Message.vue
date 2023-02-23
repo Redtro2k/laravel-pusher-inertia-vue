@@ -40,7 +40,8 @@ const pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
 });
 
 onMounted(() => {
-    pusher.subscribe('messages').bind('newMessage', (data) => {
+    pusher.subscribe('messages').bind('.newMessage', (data) => {
+        console.log('testing', data)
         state.messages.push(data)
     });
 });
