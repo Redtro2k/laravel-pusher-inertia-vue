@@ -17,6 +17,7 @@ use App\Models\Message;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//thak you for giving me a tips - https://petericebear.github.io/starting-laravel-echo-20170303/
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('notify', [HomeController::class, 'notify']);

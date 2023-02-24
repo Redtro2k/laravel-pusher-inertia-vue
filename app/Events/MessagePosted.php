@@ -38,7 +38,7 @@ class MessagePosted implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('messages');
+        return new PrivateChannel('messages');
     }
 
     /**
